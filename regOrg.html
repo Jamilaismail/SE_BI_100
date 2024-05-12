@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>Registered Non-Profit Organizations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="se project.html">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="transport.html">Transport</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="medicalDetails.html">View Medical Cases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="estimatedArrival.html">Estimated Arrival</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="regOrg.html">Registered Organizations</a>
+                    </li>
+                </ul>
+              
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Registered Non-Profit Organizations</h2>
+
+        <!-- Search bar -->
+        <input type="text" id="searchBar" placeholder="Search organizations..." onkeyup="searchOrganizations()">
+
+        <!-- List of registered organizations -->
+        <ul id="organizationList">
+            <!-- Each organization is represented as a list item -->
+            <li>
+                <h3> Hope Medical Center</h3>
+
+                <p>Contact Person: Ahmed</p>
+                <p>Contact Email: ahmed@yahoo.com</p>
+                <p>Contact Phone: +1234567890</p>
+            </li>
+            <li>
+                <h3>Community Health Clinic</h3>
+
+                <p>Contact Person: Mahmoud</p>
+                <p>Contact Email: mahmoud@yahoo.com</p>
+                <p>Contact Phone: +9876543210</p>
+            </li>
+            <li>
+                <h3>Mercy Hospital</h3>
+
+                <p>Contact Person: Mariam</p>
+                <p>Contact Email: mariam@outlook.com</p>
+                <p>Contact Phone: +876541230</p>
+            </li>
+            <li>
+                <h3> Unity Medical Center</h3>
+
+                <p>Contact Person: Injy</p>
+                <p>Contact Email: injy@yahoo.com</p>
+                <p>Contact Phone: +2635673</p>
+            </li>
+            <li>
+                <h3>Harmony Medical Clinic</h3>
+
+                <p>Contact Person: Yasmine</p>
+                <p>Contact Email: yasso@hotmail.com</p>
+                <p>Contact Phone: +7354783</p>
+            </li>
+            <li>
+                <h3>Compassionate Care Hospital</h3>
+
+                <p>Contact Person: Carlos</p>
+                <p>Contact Email: carlos55@yahoo.com</p>
+                <p>Contact Phone: +7354783</p>
+            </li>
+            <li>
+                <h3>Grace Community Clinic</h3>
+                <p>Contact Person: Tom</p>
+                <p>Contact Email: tomhardy2@gmail.com</p> 
+                <p>Contact Phone: +7354783</p>
+            </li>
+
+
+        </ul>
+    </div>
+
+    <script>
+        // Function to search organizations
+        function searchOrganizations() {
+            var input, filter, ul, li, h3, i, txtValue;
+            input = document.getElementById('searchBar');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById('organizationList');
+            li = ul.getElementsByTagName('li');
+            for (i = 0; i < li.length; i++) {
+                h3 = li[i].getElementsByTagName('h3')[0];
+                txtValue = h3.textContent || h3.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = '';
+                } else {
+                    li[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
