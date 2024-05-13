@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Login & Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="company_logo">
+                <img src="logo.png" alt="Harmony Enterprises Logo">
+            </div>
+            <div class="company_label">
+                <span class="company_name">Harmony Enterprises</span>
+            </div>
+            <ul class="nav_items">
+                <li class="nav_item">
+                    <a href="index.html" class="nav_link">Home</a>
+                    <a href="medDetails.html" class="nav_link">Medical Cases</a>
+                    <a href="Transportation.html" class="nav_link">Transportation</a>
+                    <a href="registeredOrg.html" class="nav_link">Registered Organizations</a>
+                    <a href="estimatedArrive.html" class="nav_link">Estimated Pick-Up Time</a>
+                </li>
+            </ul>
+            
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Transportation Details</h2>
+        <form id="transportForm">
+            <label for="transportMethod">Transportation Method:</label>
+            <select id="transportMethod">
+                <option value="truck">Truck</option>
+                <option value="car">Car</option>
+                <option value="motorcycle">Motorcycle</option>
+            </select>
+
+            <label for="pickUpDateTime">Pick-up Date & Time:</label>
+            <input type="datetime-local" id="pickUpDateTime" min="10:00" max="20:00" required>
+
+            <label for="dropOffDateTime">Drop-off Date & Time:</label>
+            <input type="datetime-local" id="dropOffDateTime" min="10:00" max="20:00" required>
+
+            <div class="address-field">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required class="small-input">
+            </div>
+
+            <span id="warningMessage" class="warning" style="display: none;">Drop-off time is before pick-up</span>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
+    <img src="deliv.png" alt="Transportation Image" class="transportation-image">
+
+    <script>
+        document.getElementById("transportForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var pickUpDateTime = new Date(document.getElementById("pickUpDateTime").value);
+            var dropOffDateTime = new Date(document.getElementById("dropOffDateTime").value);
+
+            if (pickUpDateTime >= dropOffDateTime) {
+                document.getElementById("warningMessage").style.display = "block";
+            } else {
+                document.getElementById("warningMessage").style.display = "none";
+                alert("Date & Time Confirmation:\n\nPick-up Date & Time: " + pickUpDateTime + "\nDrop-off Date & Time: " + dropOffDateTime);
+                window.location.href = "estimatedArrive.html"; // Redirect to the "estimatedArrive.html" page
+            }
+        });
+        document.getElementById('transportForm').onsubmit = function (event) {
+            event.preventDefault();
+            var date = document.getElementById('pickUpDateTime').value;
+            if (date) {
+                localStorage.setItem('pickUpDateTime', date);
+                window.location.href = 'estimatedArrive.html';
+            } else {
+                alert('Please choose a date.');
+            }
+        };
+    </script>
+</body>
+</html>

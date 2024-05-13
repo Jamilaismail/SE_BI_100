@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Login & Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="company_logo">
+                <img src="logo.png" alt="Harmony Enterprises Logo">
+            </div>
+            <div class="company_label">
+                <span class="company_name">Harmony Enterprises</span>
+            </div>
+            <ul class="nav_items">
+                <li class="nav_item">
+                    <a href="index.html" class="nav_link">Home</a>
+                    <a href="medDetails.html" class="nav_link">Medical Cases</a>
+                    <a href="Transportation.html" class="nav_link">Transportation</a>
+                    <a href="registeredOrg.html" class="nav_link">Registered Organizations</a>
+                    <a href="estimatedArrive.html" class="nav_link">Estimated Pick-Up Time</a>
+                </li>
+            </ul>
+       
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Registered Non-Profit Organizations</h2>
+
+        <!-- Search bar -->
+        <input type="text" id="searchBar" placeholder="Search organizations..." onkeyup="searchOrganizations()">
+
+        <!-- List of registered organizations -->
+        <ul id="organizationList">
+            <!-- Each organization is represented as a list item -->
+            <li>
+                <h3> Hope Medical Center</h3>
+
+                <p>Contact Person: Ahmed</p>
+                <p>Contact Email: ahmed@yahoo.com</p>
+                <p>Contact Phone: +1234567890</p>
+            </li>
+            <li>
+                <h3>Community Health Clinic</h3>
+
+                <p>Contact Person: Mahmoud</p>
+                <p>Contact Email: mahmoud@yahoo.com</p>
+                <p>Contact Phone: +9876543210</p>
+            </li>
+            <li>
+                <h3>Mercy Hospital</h3>
+
+                <p>Contact Person: Mariam</p>
+                <p>Contact Email: mariam@outlook.com</p>
+                <p>Contact Phone: +876541230</p>
+            </li>
+            <li>
+                <h3> Unity Medical Center</h3>
+
+                <p>Contact Person: Injy</p>
+                <p>Contact Email: injy@yahoo.com</p>
+                <p>Contact Phone: +2635673</p>
+            </li>
+            <li>
+                <h3>Harmony Medical Clinic</h3>
+
+                <p>Contact Person: Yasmine</p>
+                <p>Contact Email: yasso@hotmail.com</p>
+                <p>Contact Phone: +7354783</p>
+            </li>
+            <li>
+                <h3>Compassionate Care Hospital</h3>
+
+                <p>Contact Person: Carlos</p>
+                <p>Contact Email: carlos55@yahoo.com</p>
+                <p>Contact Phone: +7354783</p>
+            </li>
+            <li>
+                <h3>Grace Community Clinic</h3>
+                <p>Contact Person: Tom</p>
+                <p>Contact Email: tomhardy2@gmail.com</p>
+                <p>Contact Phone: +7354783</p>
+            </li>
+
+
+        </ul>
+    </div>
+
+    <img src="praying.png" alt="pray" class="pray-image">
+
+    <script>
+        // Function to search organizations
+        function searchOrganizations() {
+            var input, filter, ul, li, h3, i, txtValue;
+            input = document.getElementById('searchBar');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById('organizationList');
+            li = ul.getElementsByTagName('li');
+            for (i = 0; i < li.length; i++) {
+                h3 = li[i].getElementsByTagName('h3')[0];
+                txtValue = h3.textContent || h3.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = '';
+                } else {
+                    li[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

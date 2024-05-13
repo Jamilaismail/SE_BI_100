@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Login & Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="company_logo">
+                <img src="logo.png" alt="Harmony Enterprises Logo">
+            </div>
+            <div class="company_label">
+                <span class="company_name">Harmony Enterprises</span>
+            </div>
+            <ul class="nav_items">
+                <li class="nav_item">
+                    <a href="index.html" class="nav_link">Home</a>
+                    <a href="medDetails.html" class="nav_link">Medical Cases</a>
+                    <a href="Transportation.html" class="nav_link">Transportation</a>
+                    <a href="registeredOrg.html" class="nav_link">Registered Organizations</a>
+                    <a href="estimatedArrive.html" class="nav_link">Estimated Pick-Up Time</a>
+                </li>
+            </ul>
+        
+        </nav>
+    </header>
+
+
+    <h1>Medical Cases</h1>
+
+    <!-- Filter criteria -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label for="medicalSpecialty">Medical Specialty:</label>
+                <select id="medicalSpecialty">
+                    <option value="">All</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                    <option value="Orthopedics">Orthopedics</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Oncology">Oncology</option>
+                    <option value="Geriatrics">Geriatrics</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="organizationName">Organization Name:</label>
+                <input type="text" id="organizationName">
+            </div>
+            <div class="col">
+                <label for="area">Area:</label>
+                <input type="text" id="area">
+            </div>
+            <div class="col">
+                <label for="governorate">Governorate:</label>
+                <input type="text" id="governorate">
+            </div>
+        </div>
+    </div>
+
+    <!-- Medical Cases -->
+    <div id="medicalCases">
+        <!-- Medical cases will be dynamically populated here -->
+    </div>
+
+    <!-- Button to fulfill medical case -->
+    <button onclick="fulfillMedicalCase()">Fulfill Medical Case</button>
+
+    <script>
+        // Sample medical cases data (can be fetched from API or database)
+        const medicalCases = [
+            {
+                patientName: "John Smith",
+                age: 45,
+                gender: "Male",
+                weight: "75 kg",
+                location: "Latitude: 40.7128, Longitude: -74.0060",
+                address: "123 Main Street, Cityville, USA",
+                organizationName: "Hope Medical Center",
+                medicalSpecialty: "Cardiology",
+                caseDescription: "John Smith, a 45-year-old male, is experiencing chest pains and shortness of breath. He has a history of heart disease and requires immediate medical attention."
+            },
+            {
+                patientName: "Emily Johnson",
+                age: 30,
+                gender: "Female",
+                weight: "60 kg",
+                location: "Latitude: 34.0522, Longitude: -118.2437",
+                address: "456 Elm Street, Townsville,USA",
+                organizationName: "Community Health Clinic",
+                medicalSpecialty: "Obstetrics and Gynecology",
+                caseDescription: "Emily Johnson, a 30-year-old female, is pregnant and experiencing complications with her pregnancy. She needs urgent medical care to ensure the safety of both herself and her baby."
+            },
+            {
+                patientName: "Michael Brown",
+                age: 55,
+                gender: "Male",
+                weight: "80 kg",
+                location: "Latitude: 51.5074, Longitude: -0.1278",
+                address: "789 Oak Avenue, Villagetown,UK",
+                organizationName: "Mercy Hospital",
+                medicalSpecialty: "Orthopedics",
+                caseDescription: "Michael Brown, a 55-year-old male, fractured his leg in a car accident. He requires surgery and ongoing orthopedic care for proper healing and rehabilitation."
+            },
+            {
+                patientName: "Sarah Lee",
+                age: 25,
+                gender: "Female",
+                weight: "55 kg",
+                location: "Latitude: 35.6895, Longitude: 139.6917",
+                address: "101 Pine Street, Cityburg, UK",
+                organizationName: "Unity Medical Center",
+                medicalSpecialty: "Pediatrics",
+                caseDescription: "Sarah Lee, a 25-year-old female, has brought her infant to the hospital with symptoms of a high fever and persistent crying. The baby needs immediate medical evaluation and treatment."
+            },
+            {
+                patientName: "David Rodriguez",
+                age: 60,
+                gender: "Male",
+                weight: "85 kg",
+                location: "Latitude: -33.8688, Longitude: 151.2093",
+                address: "202 Maple Avenue, Villagetown, France",
+                organizationName: "Harmony Medical Clinic",
+                medicalSpecialty: "Neurology",
+                caseDescription: "David Rodriguez, a 60-year-old male, has been experiencing seizures and confusion. He requires neurological evaluation and treatment to manage his condition."
+            },
+            {
+                patientName: "Lisa Nguyen",
+                age: 35,
+                gender: "Female",
+                weight: "62 kg",
+                location: "Latitude: 22.3193, Longitude: 114.1694",
+                address: "303 Walnut Street, Townsville, France",
+                organizationName: "Compassionate Care Hospital",
+                medicalSpecialty: "Oncology",
+                caseDescription: "Lisa Nguyen, a 35-year-old female, has been diagnosed with breast cancer and requires chemotherapy treatment. She needs ongoing care and support to manage her condition."
+            },
+            {
+                patientName: "James Wilson",
+                age: 70,
+                gender: "Male",
+                weight: "78 kg",
+                location: "Latitude: 41.8781, Longitude: -87.6298",
+                address: "404 Oak Street, Cityville, USA",
+                organizationName: "Grace Community Clinic",
+                medicalSpecialty: "Geriatrics",
+                caseDescription: "James Wilson, a 70-year-old male, has been admitted to the hospital with symptoms of dehydration and confusion. He requires geriatric evaluation and management to address his medical needs."
+            }
+        ];
+
+
+        // Function to filter medical cases based on criteria
+        function filterMedicalCases() {
+            const medicalSpecialty = document.getElementById("medicalSpecialty").value;
+            const organizationName = document.getElementById("organizationName").value.toLowerCase();
+            const area = document.getElementById("area").value.toLowerCase();
+            const governorate = document.getElementById("governorate").value.toLowerCase();
+
+            const filteredCases = medicalCases.filter((caseData) => {
+                return (medicalSpecialty === "" || caseData.medicalSpecialty === medicalSpecialty) &&
+                    (organizationName === "" || caseData.organizationName.toLowerCase().includes(organizationName)) &&
+                    (area === "" || caseData.address.toLowerCase().includes(area)) &&
+                    (governorate === "" || caseData.address.toLowerCase().includes(governorate));
+            });
+
+            displayMedicalCases(filteredCases);
+        }
+
+        // Function to display filtered medical cases
+        function displayMedicalCases(cases) {
+
+            const medicalCasesContainer = document.getElementById("medicalCases");
+            medicalCasesContainer.innerHTML = "";
+
+            cases.forEach((caseData, index) => {
+                const caseElement = document.createElement("div");
+                caseElement.classList.add("case");
+                caseElement.innerHTML = `
+                                            <h2>Medical Case ${index + 1}</h2>
+                                            <p><strong>Patient Name:</strong> ${caseData.patientName}</p>
+                                            <p><strong>Age:</strong> ${caseData.age}</p>
+                                            <p><strong>Gender:</strong> ${caseData.gender}</p>
+                                            <p><strong>Weight:</strong> ${caseData.weight}</p>
+                                            <p><strong>Location:</strong> ${caseData.location}</p>
+                                            <p><strong>Address:</strong> ${caseData.address}</p>
+                                            <p><strong>Organization Name:</strong> ${caseData.organizationName}</p>
+                                            <p><strong>Medical Specialty:</strong> ${caseData.medicalSpecialty}</p>
+                                            <p><strong>Case Description:</strong> ${caseData.caseDescription}</p>
+                                            <input type="checkbox" id="fulfillCheckbox${index}" onclick="updateStatus(${index})">
+
+                                            <span id="statusLabel${index}">Unfulfilled</span>
+
+                                        `;
+                medicalCasesContainer.appendChild(caseElement);
+            });
+        }
+
+        // Initial display of medical cases
+        displayMedicalCases(medicalCases);
+
+        // Event listeners for filter criteria
+        document.getElementById("medicalSpecialty").addEventListener("change", filterMedicalCases);
+        document.getElementById("organizationName").addEventListener("input", filterMedicalCases);
+        document.getElementById("area").addEventListener("input", filterMedicalCases);
+        document.getElementById("governorate").addEventListener("input", filterMedicalCases);
+
+        // Function to fulfill medical case
+        function fulfillMedicalCase() {
+            // Logic to fulfill medical case
+            alert("Medical case fulfilled");
+        }
+        function updateStatus(index) {
+            const checkbox = document.getElementById(`fulfillCheckbox${index}`);
+            const statusLabel = document.getElementById(`statusLabel${index}`);
+
+            if (checkbox.checked) {
+                statusLabel.textContent = "Fulfilled";
+            } else {
+                statusLabel.textContent = "Unfulfilled";
+            }
+        }
+
+    </script>
+</body>
+</html>

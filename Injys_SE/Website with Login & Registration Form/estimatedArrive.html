@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website with Login & Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Unicons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+<body>
+    <!-- Header -->
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="company_logo">
+                <img src="logo.png" alt="Harmony Enterprises Logo">
+            </div>
+            <div class="company_label">
+                <span class="company_name">Harmony Enterprises</span>
+            </div>
+            <ul class="nav_items">
+                <li class="nav_item">
+                    <a href="index.html" class="nav_link">Home</a>
+                    <a href="medDetails.html" class="nav_link">Medical Cases</a>
+                    <a href="Transportation.html" class="nav_link">Transportation</a>
+                    <a href="registeredOrg.html" class="nav_link">Registered Organizations</a>
+                    <a href="estimatedArrive.html" class="nav_link">Estimated Pick-Up Time</a>
+                </li>
+            </ul>
+       
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="se project.html">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="transport.html">Transport</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="medicalDetails.html">View Medical Cases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="estimatedArrival.html">Estimated Arrival</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="regOrg.html">Registered Organizations</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    </nav>
+
+    <div class="container" >
+        <h2>Arrival</h2>
+
+        <!-- Label for estimated arrival time -->
+        <label for="estimatedArrivalTime">Estimated Arrival Time:</label>
+        <p id="estimatedArrivalTime"> <span id="pickUpTime">--:--</span></p>
+
+        <!-- Notification button -->
+        <button class="notification-btn" id="notificationBtn" onclick="notifyDonor()">Notifications</button>
+    </div>
+
+    <script>
+        // Get pick-up time from URL parameter or default to current time
+        var urlParams = new URLSearchParams(window.location.search);
+        var pickUpTime = urlParams.get('pickUpTime') || getCurrentTime();
+        document.getElementById('pickUpTime').textContent = pickUpTime;
+
+        // Function to notify donor
+        function notifyDonor() {
+            alert("Package delivered");
+        }
+
+        // Get current time in HH:MM format
+        function getCurrentTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            hours = (hours < 10 ? '0' : '') + hours;
+            minutes = (minutes < 10 ? '0' : '') + minutes;
+            return hours + ':' + minutes;
+        }
+        var date = localStorage.getItem('pickUpDateTime');
+        if (date) {
+            document.getElementById('transportForm').innerHTML = 'Your pickup date is: ' + date;
+        } else {
+            document.getElementById('estimatedArrivalTime').innerHTML = 'No pickup date chosen.';
+        }
+      
+    </script>
+</body>
+</html>
