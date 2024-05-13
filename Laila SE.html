@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationary Donation</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div>
+        <h2>View Details of Stationary Items</h2>
+        <p>Select a requested stationary item:</p>
+        <select id="stationaryItems">
+            <option value="notebooks">Notebooks</option>
+            <option value="pens">Pens</option>
+        </select>
+        <div>
+            <p>Type of Item: <span id="stationaryItemType">Notebooks</span></p>
+            <p>Amount requested: <span id="stationaryItemAmount">100</span></p>
+        </div>
+    </div>
+
+    <div>
+        <h2>Quantity Selection for Stationary Donations</h2>
+        <p>Enter quantity to donate:</p>
+        <input type="number" id="stationaryQuantity" min="0" max="100" value="0">
+    </div>
+    <div>
+        <h2>View Details of Book Requests</h2>
+        <p>Select a requested book:</p>
+        <select id="bookRequests">
+            <option value="harryPotter">Harry Potter and the Sorcerer's Stone</option>
+            <option value="toKillAMockingbird">To Kill a Mockingbird</option>
+            
+        </select>
+        <div>
+            <p>Book Name: <span id="bookName">Harry Potter and the Sorcerer's Stone</span></p>
+            <p>Author: <span id="bookAuthor">J.K. Rowling</span></p>
+            <p>Language: <span id="bookLanguage">English</span></p>
+            <p>Edition: <span id="bookEdition">1st</span></p>
+            <p>Summary: <span id="bookSummary">A young boy discovers he is a wizard and attends a magical school.</span></p>
+
+        </div>
+    </div>
+    <div>
+        <h2>Quantity Selection for Book Donations</h2>
+        <p>Enter quantity to donate:</p>
+        <input type="number" id="bookQuantity" min="0" max="10" value="0">
+    </div>
+    <div>
+        <h2>View List of Toy Donation Requests</h2>
+        
+        <ul id="toyRequests">
+            <li>Board Games</li>
+            <li>Stuffed Toys</li>
+            
+        </ul>
+    </div>
+
+    <div>
+        <h2>Filter Toy Donation Requests</h2>
+        <label for="ageFilter">Age:</label>
+        <input type="text" id="ageFilter">
+        <label for="genderFilter">Gender:</label>
+        <select id="genderFilter">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            
+        </select>
+        <label for="categoryFilter">Category:</label>
+        <select id="categoryFilter">
+            <option value="boardGames">Board Games</option>
+            <option value="stuffedToys">Stuffed Toys</option>
+            
+        </select>
+    </div>
+
+    <div>
+        <h2>View Details of Toy Items</h2>
+        <p>Select a requested toy:</p>
+        <select id="toyItems">
+            <option value="toy1">Monopoly</option>
+            <option value="toy2">Teddy Bear</option>
+        </select>
+        <div>
+            <p>Type: <span id="toyType">Board Game</span></p>
+            <p>Age: <span id="toyAge">6+</span></p>
+            <p>Gender: <span id="toyGender">Unisex</span></p>
+        </div>
+    </div>
+
+    <div>
+        <h2>Quantity Selection for Toy Donations</h2>
+        <p>Enter quantity to donate:</p>
+        <input type="number" id="toyQuantity" min="0" value="0">
+    </div>
+    <div>
+        <h2>View List of Food Donation Requests</h2>
+        
+        <ul id="foodRequests">
+            <li>Fruits and Vegetables</li>
+            <li>Canned Foods</li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Filter Food Donation Requests</h2>
+        <label for="foodCategoryFilter">Category:</label>
+        <select id="foodCategoryFilter">
+            <option value="fruitsVegetables">Fruits and Vegetables</option>
+            <option value="cannedFoods">Canned Foods</option>
+        </select>
+    </div>
+
+    <div>
+        <h2>View Details of Food Items</h2>
+        <p>Select a requested food item:</p>
+        <select id="foodItems">
+            <option value="food1">Apples</option>
+            <option value="food2">Canned Soup</option>
+
+        </select>
+        <div>
+            <p>Item Name: <span id="foodName">Apples</span></p>
+            <p>Quantity required: <span id="foodQuantity">10 kg</span></p>
+        </div>
+    </div>
+
+
+    <div>
+        <h2>Quantity Selection for Food Donations</h2>
+        <p>Enter quantity to donate:</p>
+        <input type="number" id="foodQuantityDonate" min="0" value="0">
+    </div>
+</body>
+</html>
